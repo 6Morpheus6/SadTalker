@@ -28,7 +28,8 @@ module.exports = {
         path: "app",
         message: [
           "uv pip install gradio devicetorch",
-          "uv pip install -r requirements.txt"
+          "uv pip install -r requirements.txt",
+          "uv pip uninstall basicsr"
         ]
       }
     },
