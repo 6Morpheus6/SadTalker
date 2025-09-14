@@ -1,8 +1,8 @@
 const path = require('path')
 module.exports = {
   version: "3.7",
-  title: "SadTalker.git",
-  description: "",
+  title: "SadTalker",
+  description: "Fast Lipsync application for smaller GPU's.",
   icon: "icon.png",
   menu: async (kernel, info) => {
     let installed = info.exists("app/env")
