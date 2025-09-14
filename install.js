@@ -1,39 +1,52 @@
 module.exports = {
   run: [
-    // Edit this step to customize the git repository to use
     {
       method: "shell.run",
       params: {
         message: [
-          "git clone https://huggingface.co/spaces/vinthony/SadTalker app",
+          "git clone https://huggingface.co/spaces/6Morpheus6/SadTalker app",
         ]
       }
     },
-    // Delete this step if your project does not use torch
     {
       method: "script.start",
       params: {
         uri: "torch.js",
         params: {
-          venv: "env",                // Edit this to customize the venv folder path
-          path: "app",                // Edit this to customize the path to start the shell from
-          // xformers: true   // uncomment this line if your project requires xformers
-          // triton: true   // uncomment this line if your project requires triton
-          // sageattention: true   // uncomment this line if your project requires sageattention
+          venv: "env",
+          path: "app",
+          // xformers: true
+          // triton: true
+          // sageattention: true
         }
       }
     },
-    // Edit this step with your custom install commands
     {
       method: "shell.run",
       params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",                // Edit this to customize the path to start the shell from
+        venv: "env",
+        path: "app",
         message: [
           "uv pip install gradio devicetorch",
           "uv pip install -r requirements.txt"
         ]
       }
     },
+    {
+      method: "hf.download",
+      params: {
+        path: "app",
+        "_": [ "leonelhs/facexlib", "alignment_WFLW_4HG.pth", "detection_Resnet50_Final.pth", "parsing_parsenet.pth" ],
+        "local-dir": "gfpgan/weights"
+      }
+    },
+    {
+      method: "hf.download",
+      params: {
+        path: "app",
+        "_": [ "nguyenhoanghuy/GFPGANv1.4.pth", "GFPGANv1.4.pth" ],
+        "local-dir": "gfpgan/weights"
+      }
+    }
   ]
 }
