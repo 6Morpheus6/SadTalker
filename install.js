@@ -9,6 +9,14 @@ module.exports = {
       }
     },
     {
+      method: "shell.run",
+      params: {
+        message: [
+          "conda update -y -c conda-forge huggingface_hub",
+        ]
+      }
+    },
+    {
       method: "script.start",
       params: {
         uri: "torch.js",
@@ -33,19 +41,17 @@ module.exports = {
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
-        "_": [ "leonelhs/facexlib", "alignment_WFLW_4HG.pth", "detection_Resnet50_Final.pth", "parsing_parsenet.pth" ],
-        "local-dir": "gfpgan/weights"
+        message: "hf download leonelhs/facexlib alignment_WFLW_4HG.pth detection_Resnet50_Final.pth parsing_parsenet.pth --local-dir gfpgan/weights && dir"
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app",
-        "_": [ "nguyenhoanghuy/GFPGANv1.4.pth", "GFPGANv1.4.pth" ],
-        "local-dir": "gfpgan/weights"
+        message: "hf download nguyenhoanghuy/GFPGANv1.4.pth GFPGANv1.4.pth --local-dir gfpgan/weights"
       }
     }
   ]
