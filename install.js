@@ -1,4 +1,7 @@
 module.exports = {
+  requires: {
+    bundle: "ai",
+  },
   run: [
     {
       method: "shell.run",
@@ -34,7 +37,7 @@ module.exports = {
         path: "app",
         message: [
           "uv pip install -r requirements.txt",
-          "uv pip install gradio devicetorch basicsr-fixed"
+          "uv pip install gradio==5.50.0 devicetorch basicsr-fixed"
         ]
       }
     },
