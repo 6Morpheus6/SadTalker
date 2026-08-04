@@ -14,12 +14,6 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        message: "conda update -y -c conda-forge huggingface_hub"
-      }
-    },
-    {
-      method: "shell.run",
-      params: {
         venv: "env",
         path: "app",
         message: [
